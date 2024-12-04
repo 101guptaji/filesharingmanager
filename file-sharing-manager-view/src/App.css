@@ -1,0 +1,53 @@
+/* Container styling */
+.app-container {
+  background-image: url("./images/bg2.jpg");
+  background-size: cover;
+  height: 100%;
+  margin: 0;
+  text-align: center;
+  padding: 20px;
+}
+
+/* Slate heading */
+.slate-heading {
+  background-color: #2c3e50;
+  color: white;
+  padding: 20px;
+  border-radius: 8px;
+  margin-bottom: 30px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.slate-heading h1 {
+  margin: 0;
+  font-size: 2.5em;
+  font-family: 'Arial', sans-serif;
+}
+
+/* Box container for layout */
+.box-container {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+/* Shared box style */
+.box {
+  padding: 20px;
+  margin-bottom: 30px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  color: white;
+}
+
+/* Upload box specific styles */
+.upload-box {
+  height: fit-content;
+  background-color: #819e8c;
+}
+
+/* File list box specific styles */
+.file-list-box {
+  background-color: #5f567e;
+}
