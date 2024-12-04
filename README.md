@@ -2,9 +2,13 @@
 It is an innovative and simple platform on which anyone can upload a file and share the link to the file with anyone.
 
 The file can be a piece of music, video, pdf, excel, image,e etc.
+
 You can upload a file size of up to 10 GB.
+
 Anyone with the link can download the file anonymously.
+
 The user can see all the uploaded files and can delete a file.
+
 Uploaded files are deleted automatically after 24 hours.
 
 ![fsm_home](https://github.com/user-attachments/assets/d135e36c-c95b-4359-bf73-ec70a1431c15)
