@@ -11,8 +11,12 @@ const FileList = () => {
       .catch(() => console.log('Error fetching files'));
   };
 
+  // UseEffect with auto-refresh every 1 minute (60000ms)
   useEffect(() => {
-    fetchFiles();
+    fetchFiles(); // Initial fetch
+    const interval = setInterval(fetchFiles, 60000); // Refresh every 60 seconds
+
+    return () => clearInterval(interval); // Cleanup on unmount
   }, []);
 
   const handleDelete = (uuid) => {

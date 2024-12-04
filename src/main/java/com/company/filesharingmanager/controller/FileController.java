@@ -12,9 +12,11 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.net.MalformedURLException;
 import java.nio.file.*;
+import java.nio.file.attribute.BasicFileAttributes;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.*;
+import java.util.concurrent.TimeUnit;
 
 @RestController
 @RequestMapping("/api/files")
@@ -50,7 +52,34 @@ public class FileController {
 
     @GetMapping("/list")
     public ResponseEntity<List<FileInfo>> listFiles() {
-        return ResponseEntity.ok(new ArrayList<>(filesMap.values()));
+        List<FileInfo> fileList = new ArrayList<>();
+        try {
+            // Walk the directory to get all files
+            Files.walk(fileStorageLocation)
+                 .filter(Files::isRegularFile)
+                 .forEach(path -> {
+                     try {
+                         BasicFileAttributes attrs = Files.readAttributes(path, BasicFileAttributes.class);
+                         fileList.add(new FileInfo(
+                             path.getFileName().toString(),
+                             new Date(attrs.creationTime().to(TimeUnit.MILLISECONDS)).toLocaleString()
+                         ));
+                     } catch (IOException e) {
+                         e.printStackTrace(); // Handle error appropriately
+                     }
+                 });
+            for(String id : filesMap.keySet()){
+                for(int i=0;i<fileList.size();i++){
+                    if(fileList.get(i).getFileName().equals(filesMap.get(id).getFileName())){
+                        fileList.set(i, filesMap.get(id));
+                    }
+                }
+            }
+        } catch (IOException e) {
+            e.printStackTrace(); // Handle error appropriately
+        }
+        return ResponseEntity.ok(fileList);
+        //return ResponseEntity.ok(new ArrayList<>(filesMap.values()));
     }
 
     @GetMapping("/download/{uuid}")
