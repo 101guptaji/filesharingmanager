@@ -1,5 +1,6 @@
 # File Sharing Manager
 It is an innovative and simple platform on which anyone can upload a file and share the link to the file with anyone.
+
 The file can be a piece of music, video, pdf, excel, image,e etc.
 You can upload a file size of up to 10 GB.
 Anyone with the link can download the file anonymously.
